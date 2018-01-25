@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static int a, b, c, x;
+
     public static void main(String[] args) {
-        int a, b, x;
+
 
         MathSymbol symbol;
 
@@ -36,15 +38,20 @@ public class Main {
 
         System.out.println("And the result is: ");
         if(symbol == MathSymbol.ADD){
-            System.out.println(Main.resultAdd());
+            c = resultAdd(table);
+            System.out.println(c);
         }
 
     }
 
 
-    public static int resultAdd (){
-        int x = 0;
-        return x;
+    public static int resultAdd (int[] table){
+        int z = 0;
+        for (int i = 0; i < b; i++) {
+            z = z + table[i];
+        }
+
+        return z;
     }
 
     /*
