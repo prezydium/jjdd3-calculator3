@@ -5,19 +5,20 @@ import java.util.Scanner;
 public class Main {
 
     public static int a, b, c, x;
+    static String result = "Operacja: ";
 
     public static void main(String[] args) {
 
 
         MathSymbol symbol;
 
-	    Scanner sc = new Scanner(System.in);
-	    do {
+        Scanner sc = new Scanner(System.in);
+        do {
             System.out.println("What operation do you want to preform (1. ADD, 2. SUBTRACT, 3. MULTIPLY, 4. DIVIDE)");
             x = sc.nextInt();
-        } while (x<1 || x >4);
+        } while (x < 1 || x > 4);
 
-	    symbol = MathSymbol.values()[x];
+        symbol = MathSymbol.values()[x];
 
         System.out.println("How many numbers will be used?");
         b = sc.nextInt();
@@ -25,32 +26,95 @@ public class Main {
 
         System.out.println("Enter those numbers: ");
 
-      for (int i = 0; i < b; i++) {
-          table[i] = sc.nextInt();
-      }
+        for (int i = 0; i < b; i++) {
+            table[i] = sc.nextInt();
+        }
 
         /*
         Test method displaying all entered numbers
-         */
+
         for (int i = 0; i < b; i++) {
             System.out.println(table[i]);
         }
+        */
 
-        System.out.println("And the result is: ");
-        if(symbol == MathSymbol.ADD){
+        if (symbol == MathSymbol.ADD) {
             c = resultAdd(table);
+            System.out.println(c);
+        }
+        if (symbol == MathSymbol.SUBTRACT) {
+            c = resultSubtract(table);
+            System.out.println(c);
+        }
+        if (symbol == MathSymbol.MULTIPLY) {
+            c = resultMultiply(table);
+            System.out.println(c);
+        }
+        if (symbol == MathSymbol.DIVIDE) {
+            c = resultDivide(table);
             System.out.println(c);
         }
 
     }
 
 
-    public static int resultAdd (int[] table){
-        int z = 0;
-        for (int i = 0; i < b; i++) {
+    public static int resultAdd(int[] table) {
+        int z = table[0];
+        result = result + table[0] + " + ";
+        for (int i = 1; i < b; i++) {
             z = z + table[i];
+            if (i < b - 1) {
+                result = result + table[i] + " + ";
+            } else {
+                result = result + table[i] + " = ";
+            }
         }
+        System.out.println(result);
+        return z;
+    }
 
+    public static int resultSubtract(int[] table) {
+        int z = table[0];
+        result = result + table[0] + " - ";
+        for (int i = 1; i < b; i++) {
+            z = z - table[i];
+            if (i < b - 1) {
+                result = result + table[i] + " - ";
+            } else {
+                result = result + table[i] + " = ";
+            }
+        }
+        System.out.println(result);
+        return z;
+    }
+
+    public static int resultMultiply(int[] table) {
+        int z = table[0];
+        result = result + table[0] + " * ";
+        for (int i = 1; i < b; i++) {
+            z = z * table[i];
+            if (i < b - 1) {
+                result = result + table[i] + " * ";
+            } else {
+                result = result + table[i] + " = ";
+            }
+        }
+        System.out.println(result);
+        return z;
+    }
+
+    public static int resultDivide(int[] table) {
+        int z = table[0];
+        result = result + table[0] + " / ";
+        for (int i = 1; i < b; i++) {
+            z = z / table[i];
+            if (i < b - 1) {
+                result = result + table[i] + " / ";
+            } else {
+                result = result + table[i] + " = ";
+            }
+        }
+        System.out.println(result);
         return z;
     }
 
